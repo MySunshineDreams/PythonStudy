@@ -6,6 +6,7 @@
 
 # 导入Socket库
 import socket
+from threading import Thread
 
 # 创建一个sokcet
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -69,19 +70,19 @@ def tcplink(sock, addr):
 		time.sleep(1)
 		if not data or data.decode('utf-8') == 'exit':
 			break
-		sock.send(('Hello, %s') % data.decode('utf-8')).encode('utf-8'))
+		sock.send(('Hello, %s') % data.decode('utf-8')).encode('utf-8')
 	sock.close()
 	print('Connection from %s:%s is closed' % (sock, addr))
 
 # 客户端
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-s.connect(('127.0.0.1', 9999))
+s.connect('127.0.0.1', 9999)
 # 接收欢迎消息
 print(s.recv(1024).decode('utf-8'))
 for data in [b'Micharel', b'Tracy', b'Sarah']:
 	# 发送数据
-	s.send(data):
+	s.send(data)
 	print(s.recv(1024).decode('utf-8'))
 s.send(b'exit')
 s.close()

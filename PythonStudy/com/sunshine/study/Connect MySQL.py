@@ -70,9 +70,10 @@ session.close()
 
 # 使用SQLAlchemy从数据库中查出数据
 # 创建session
-sessionTwo = DBSession()用all()则返回所有行
+sessionTwo = DBSession()
+# 用all()则返回所有行
 # 创建Query查询，filter是where条件，最后调用one()返回唯一一行，如果调
-user = session.query(User).filer(User.id='1').one()
+user = session.query(User).filter(User.id=='1').one()
 # 打印类型和对象的name属性
 print('type', type(user))
 print('type', user.name)
