@@ -48,12 +48,12 @@ if __name__ == "__main__":
                     productIdDict[productId] = productIdDict.get(productId) + 1
         print("结束处理", nginxFileName)
     print("开始写入")
-    writeFileName = "productIdList_" + (datetime.now() - timedelta(days=1)).strftime('%Y%m%d') + ".txt"
+    writeFileName = "/letv/data/productIdList_" + (datetime.now() - timedelta(days=1)).strftime('%Y%m%d') + ".txt"
     writeFile = open(writeFileName, "a")
     for key, value in productIdDict.items():
         writeFile.write(key + "=" + str(value) + "\n")
     print("结束写入")
     print("开始删除")
-    # removeAllFilesUsed("/letv/shell/", "nginx_api_log_*")
-    # removeAllFilesUsed("", fileName)
+    removeAllFilesUsed("/letv/shell/", "nginx_api_log_*")
+    removeAllFilesUsed("", fileName)
     print("结束删除")
