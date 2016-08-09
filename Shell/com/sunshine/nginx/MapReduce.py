@@ -29,7 +29,7 @@ serverList = ["10.100.54.57", "10.100.54.58", "10.110.122.107", "10.110.122.80",
 if __name__ == "__main__":
     # Copy the productIdList from all servers
     for server in serverList:
-        os.system("ssh root@" + server + " 'cat /letv/data/productIdList.txt' >> " + allProductIdListFileName)
+        os.system("ssh root@" + server + " 'cat /letv/data/productIdList_"+ (datetime.now() - timedelta(days=1)).strftime('%Y%m%d') + ".txt' >> " + allProductIdListFileName)
     # Open the file and statistics the total number
     with open(allProductIdListFileName, "r") as allProductIdFile:
         for line in allProductIdFile.readlines():
