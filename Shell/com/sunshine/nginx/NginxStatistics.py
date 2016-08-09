@@ -7,6 +7,7 @@ import os
 
 nginxLogFileNameList = []
 productIdDict = {}
+fileNamePrefix = "/letv/shell/"
 
 def unzipLog(zipFileName, fileName):
     os.system("gunzip -c " + zipFileName + " > " + fileName)
@@ -18,7 +19,7 @@ def getFilesToTraversal(dir, filePrefix):
     allFileNamesList = os.listdir(dir)
     for fileName in allFileNamesList:
         if fileName.__contains__(filePrefix) != False:
-            nginxLogFileNameList.append(fileName)
+            nginxLogFileNameList.append(fileNamePrefix + fileName)
 
 def removeAllFilesUsed(dir, fileMatch):
     os.system("rm -f " + dir + fileMatch)
